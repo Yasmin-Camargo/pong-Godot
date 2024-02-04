@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkbfmh4rfsmyw"]
+
+[ext_resource type="PackedScene" uid="uid://db7kbwft3mcdt" path="res://player.tscn" id="1_rrvkp"]
+[ext_resource type="Script" path="res://game.gd" id="1_vkssw"]
+[ext_resource type="PackedScene" uid="uid://csi46j0u7gamx" path="res://ball.tscn" id="2_sky86"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2uqd"]
+size = Vector2(1140.07, 62.0588)
+
+[sub_resource type="SystemFont" id="SystemFont_njtjx"]
+font_names = PackedStringArray("Franklin Gothic")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vkssw")
+
+[node name="Top" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(580, -22)
+shape = SubResource("RectangleShape2D_r2uqd")
+
+[node name="Bottom" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(578, 674)
+shape = SubResource("RectangleShape2D_r2uqd")
+
+[node name="Left" type="Area2D" parent="."]
+position = Vector2(-2, -2)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-19, 267)
+rotation = 1.57942
+shape = SubResource("RectangleShape2D_r2uqd")
+
+[node name="Rigtht" type="Area2D" parent="."]
+position = Vector2(1162, -32)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rigtht"]
+position = Vector2(16, 256)
+rotation = 1.57942
+shape = SubResource("RectangleShape2D_r2uqd")
+
+[node name="Player" parent="." instance=ExtResource("1_rrvkp")]
+position = Vector2(88, 286)
+
+[node name="Player2" parent="." instance=ExtResource("1_rrvkp")]
+position = Vector2(1054, 294)
+side = "p2"
+
+[node name="Ball" parent="." instance=ExtResource("2_sky86")]
+position = Vector2(588, 327)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 337.0
+offset_top = 51.0
+offset_right = 384.0
+offset_bottom = 146.0
+theme_override_fonts/font = SubResource("SystemFont_njtjx")
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 801.0
+offset_top = 53.0
+offset_right = 848.0
+offset_bottom = 148.0
+theme_override_fonts/font = SubResource("SystemFont_njtjx")
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
+[connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Rigtht" to="." method="_on_rigtht_body_entered"]
