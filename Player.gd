@@ -25,3 +25,12 @@ func get_axis(up, down):
 func _on_area_2d_body_entered(body):
 	body.direction.x *= -1
 	Main.side = side
+	
+	if body.direction.x == -1:
+		var ball_sprite = get_parent().get_node("Ball/Sprite2D_ball")
+		var new_texture = preload("res://assets/bola2.png")
+		ball_sprite.texture = new_texture
+	else: 
+		var ball_sprite = get_parent().get_node("Ball/Sprite2D_ball")
+		var new_texture = preload("res://assets/bola1.png")
+		ball_sprite.texture = new_texture

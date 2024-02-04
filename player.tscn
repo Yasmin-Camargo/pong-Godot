@@ -1,8 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://db7kbwft3mcdt"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_hb4yj"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_svnoq"]
+[ext_resource type="Texture2D" uid="uid://d32fvtvrrpnti" path="res://assets/foguete.png" id="2_drbia"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x147x"]
 size = Vector2(33, 146.5)
@@ -12,13 +11,14 @@ size = Vector2(45, 160)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_hb4yj")
+metadata/_edit_horizontal_guides_ = []
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(9, 32.5)
-scale = Vector2(32, 147)
-texture = SubResource("PlaceholderTexture2D_svnoq")
+position = Vector2(6, 35)
+scale = Vector2(0.202731, 0.189815)
+texture = ExtResource("2_drbia")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8.5, 33.75)
