@@ -27,11 +27,13 @@ func _on_area_2d_body_entered(body):
 	Main.side = side
 	
 	var ball_sprite = get_parent().get_node("Ball/Sprite2D_ball")
-
+	if ball_sprite != null:
+		if body.direction.x == -1:
+			var new_texture = preload("res://assets/bola2.png")
+			ball_sprite.texture = new_texture
+		else:
+			var new_texture = preload("res://assets/bola1.png")
+			ball_sprite.texture = new_texture
 	
-	if body.direction.x == -1:
-		var new_texture = preload("res://assets/bola2.png")
-		ball_sprite.texture = new_texture
-	else:
-		var new_texture = preload("res://assets/bola1.png")
-		ball_sprite.texture = new_texture
+	var sound_player = get_parent().get_node("AudioStreamPlayer2D")
+	sound_player.play()

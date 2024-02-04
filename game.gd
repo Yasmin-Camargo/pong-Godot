@@ -6,9 +6,13 @@ func _process(delta):
 	
 func _on_top_body_entered(body):
 	body.direction.y *= -1
+	var sound_player = $AudioStreamPlayer2D
+	sound_player.play()
 
 func _on_bottom_body_entered(body):
 	body.direction.y *= -1
+	var sound_player = $AudioStreamPlayer2D
+	sound_player.play()
 
 func _on_left_body_entered(body):
 	body.queue_free()
